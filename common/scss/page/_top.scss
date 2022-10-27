@@ -1,0 +1,336 @@
+@charset "utf-8";
+/* ---------------------------------------
+	Top
+-----------------------------------------*/
+@use "../config";
+@use "../mixin";
+
+.top-msg{
+	padding: 6rem 0;
+	&__wrap{
+		@include mixin.containerWrap();
+		color: #fff;
+		h1{
+			text-align: center;
+			font-size: 50px;
+			margin: 0 0 5rem 0;
+			@include mixin.tab {
+				@include mixin.font-vw(55 , 375);
+			}
+			span{
+				color: #fcee21;
+			}
+		}
+		p{
+			text-align: center;
+			line-height: 2;
+			@include mixin.tab {
+				text-align: left;
+				@include mixin.font-vw(16 , 375);
+			}
+		}
+	}
+}
+
+.company-profile {
+	background: config.$mainColor url(../img/page/top/logo_bg.svg) no-repeat right -40px bottom  -40px / 450px;
+	&__wrap {
+		@include mixin.containerWrap();
+		padding: 6rem 0;
+		.caption{
+			@include mixin.sectionTitle(#fff, #fff);
+		}
+		.tableWrap{
+			display: flex;
+			color: #fff;
+			@include mixin.tab{
+				flex-direction: column;
+			}
+			table{
+				width: 50%;
+				box-sizing: border-box;
+				line-height: 1.5;
+				@include mixin.tab{
+					width: 100%;
+				}
+				th{
+					width: 12rem;
+					text-align: left;
+					padding: 0.5rem 3rem 0.5rem 0;
+					border-right: #fff 1px solid;
+					box-sizing: border-box;
+					@include mixin.tab{
+						padding: 0.5rem 1rem;
+					}
+					&.justify{
+						text-align-last: justify;
+					}
+				}
+				td{
+					padding: 0.5rem 0 0.5rem 3rem;
+					@include mixin.tab{
+						padding: 0.5rem 1rem;
+					}
+					ul{
+						list-style: none;
+						li{
+							padding: 0.5rem 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.business-outline{
+	display: flex;
+	@include mixin.tab{
+		flex-direction: column-reverse;
+	}
+	&__img{
+		width: min(550px, 35vw);
+		@include mixin.tab{
+			width: 100%;
+		}
+		img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	&__wrap{
+		flex:1;
+		padding: 6rem 0 6rem 5rem;
+		@include mixin.tab{
+			width: 95%;
+			margin: 0 auto;
+			padding: 6rem 0;
+		}
+		.caption{
+			@include mixin.sectionTitle();
+		}
+		.text{
+			line-height: 2;
+			margin: 0 0 2rem 0;
+			@include mixin.tab{
+				@include mixin.font-vw(16, 375);
+			}
+		}
+		.workList{
+			dl{
+				display: flex;
+				line-height: 1.5;
+				&:not(:last-of-type){
+					margin: 0 0 3rem 0;
+				}
+				@include mixin.tab{
+					@include mixin.font-vw(16, 375);
+				}
+				dt{
+					padding: 0 0 0 1.5em;
+					position: relative;
+					width: 10em;
+					&::before{
+						content: "\f00c";
+						font-family: "Font Awesome 5 Free";
+						font-weight: 900;
+						color: config.$mainColor;
+						margin: 0 0.5rem 0 0;
+						position: absolute;
+						top:0;
+						left: 0;
+					}
+				}
+				dd{
+					flex:1;
+					padding: 0 0 0 1em;
+				}
+
+			}
+		}
+	}
+}
+
+.about-price {
+	background-color: #eef4fb;
+	&__wrap {
+		@include mixin.containerWrap();
+		padding: 6rem 0;
+		.caption{
+			@include mixin.sectionTitle();
+		}
+		.priceList{
+			list-style: none;
+			display: flex;
+			justify-content: space-between;
+
+			gap: 45px;
+			margin: 0 0 1rem 0;
+			@include mixin.tab{
+				flex-wrap: wrap;
+				gap: 10px;
+			}
+			li{
+				background-color: config.$bgColor;
+				width: calc(100% / 4);
+				@include mixin.tab{
+					width: calc(100% / 2  - 5px);
+				}
+				img{
+					@include mixin.imgFluid();
+				}
+				.text{
+					padding: 1rem 1rem 3rem 1rem;
+					h3{
+						margin: 0 0 1rem 0;
+						font-feature-settings: "palt";
+						@include mixin.tab {
+							@include mixin.font-vw(16 , 375);
+						}
+					}
+					p{
+						text-align: right;
+						@include mixin.tab {
+							@include mixin.font-vw(16 , 375);
+						}
+					}
+				}
+			}
+		}
+		.caution{
+			font-size: 1.4rem;
+			text-align: right;
+			margin: 0 0 3rem 0;
+			@include mixin.tab {
+				text-align: left;
+				@include mixin.font-vw(14 , 375);
+			}
+		}
+		.text{
+			line-height: 2;
+			@include mixin.tab {
+				@include mixin.font-vw(16 , 375);
+			}
+		}
+	}
+}
+
+.access {
+	&__wrap {
+		@include mixin.containerWrap();
+		padding: 6rem 0;
+		.caption{
+			@include mixin.sectionTitle();
+		}
+		.map{
+			aspect-ratio: 4 / 3;
+			iframe{
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}
+
+.contact {
+	width: 100%;
+	background-image: url(../img/page/top/contctBg.png);
+	background-position: 50%;
+	background-size: cover;
+	position: relative;
+	&::before{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(37,93,150,.8);
+	}
+	&__wrap {
+		@include mixin.containerWrap();
+		padding: 6rem 0;
+		.caption{
+			@include mixin.sectionTitle(#fff, #fff);
+		}
+		.text{
+			line-height: 1.5;
+			color: #fff;
+			margin: 0 0 2rem 0;
+			@include mixin.tab {
+				@include mixin.font-vw(16 , 375);
+			}
+		}
+		.formWrap{
+			display: flex;
+			gap: 50px;
+			margin: 0 0 3rem 0;
+			@include mixin.tab{
+				flex-direction: column;
+				gap:0;
+			}
+			.left,
+			.right{
+				width: calc(100% / 2);
+				@include mixin.tab{
+					width: 100%;
+				}
+			}
+			.table{
+				width: 100%;
+				th{
+					vertical-align: top;
+					color: #fff;
+					text-align: left;
+					padding: 1rem 0;
+					@include mixin.tab{
+						display: block;
+						width: 100%;
+					}
+				}
+				td{
+					padding: 1rem 0;
+					@include mixin.tab{
+						display: block;
+						width: 100%;
+					}
+				}
+			}
+		}
+		input[type="text"],
+		input[type="email"],
+		textarea{
+			width: 100%;
+			padding: 1rem;
+			box-sizing: border-box;
+			border: #ccc 1px solid;
+			border-radius: 5px;
+			&:not(:nth-of-type(1)){
+				margin: 0.5rem 0 0 0;
+			}
+		}
+		.confirmBtn{
+			text-align: center;
+			input[type="submit"]{
+				background-color: config.$subColor;
+				color: #fff;
+				padding: 2rem;
+				min-width: 280px;
+				box-sizing: border-box;
+				border: config.$subColor 1px solid;
+				border-radius: 10px;
+				font-size: 2.2rem;
+				transition: 0.5s;
+				cursor: pointer;
+				@include mixin.tab{
+					@include mixin.font-vw(22, 375);
+				}
+				&:hover{
+					background-color: #fff;
+					color: config.$subColor;
+				}
+			}
+		}
+	}
+}

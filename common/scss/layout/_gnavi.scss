@@ -1,0 +1,125 @@
+@charset "utf-8";
+/* ---------------------------------------
+	Global Navigation
+-----------------------------------------*/
+@use "../config";
+@use "../mixin";
+
+.global-nav {
+	@include mixin.tab{
+		position: fixed;
+		top:0;
+		left: 0;
+		width: 100%;
+		background-color: rgba(37,93,150,.8);
+		z-index: 2;
+		transform: translateY(-100%);
+		transition: .35s ease-in-out;
+		&.active{
+			transform: translateY(0);
+		}
+	}
+	&__list{
+		display: flex;
+		@include mixin.tab{
+			width: 100%;
+			flex-direction: column;
+		}
+		&-item{
+			@include mixin.tab{
+				&:not(:last-child){
+					border-bottom: #fff 1px solid;
+				}
+			}
+			&:not(:first-child){
+				margin: 0 0 0 3rem;
+				@include mixin.tab{
+					margin: 0;
+				}
+			}
+			a{
+				color: #fff;
+				@include mixin.tab{
+					display: block;
+					padding: 2rem 1rem;
+				}
+			}
+		}
+	}
+}
+
+/* ---------------------------------------
+	Hamburger Menu
+-----------------------------------------*/
+// Global menu for Smartphone
+.navToggle {
+	display: none;
+	@include mixin.tab {
+	  display: block;
+	  position: fixed; //bodyに対しての絶対位置指定
+	  right: 13px;
+	  top: 12px;
+	  width: 42px;
+	  height: 48px;
+	  cursor: pointer;
+	  z-index: 5;
+	  border: config.$mainColor 1px solid;
+	  border-radius: 5px;
+	  background-color: config.$bgColor;
+	  text-align: center;
+	  span {
+		@include mixin.tab {
+		  display: block;
+		  position: absolute;
+		  width: 30px;
+		  border-bottom: solid 3px config.$mainColor;
+		  transition: 0.35s ease-in-out;
+		  left: 6px;
+		}
+		&:nth-child(1) {
+		  @include mixin.tab {
+			top: 9px;
+		  }
+		}
+		&:nth-child(2) {
+		  @include mixin.tab {
+			top: 18px;
+		  }
+		}
+		&:nth-child(3) {
+		  @include mixin.tab {
+			top: 27px;
+		  }
+		}
+		&:nth-child(4) {
+		  @include mixin.tab {
+			border: none;
+			color: config.$mainColor;
+			font-size: 9px;
+			font-weight: bold;
+			top: 34px;
+		  }
+		}
+	  }
+	  /* 最初のspanをマイナス45度に */
+	  &.active span:nth-child(1) {
+		@include mixin.tab {
+		  top: 18px;
+		  left: 6px;
+		  -webkit-transform: rotate(-45deg);
+		  -moz-transform: rotate(-45deg);
+		  transform: rotate(-45deg);
+		}
+	  }
+	  /* 2番目と3番目のspanを45度に */
+	  &.active span:nth-child(2),
+	  &.active span:nth-child(3) {
+		@include mixin.tab {
+		  top: 18px;
+		  -webkit-transform: rotate(45deg);
+		  -moz-transform: rotate(45deg);
+		  transform: rotate(45deg);
+		}
+	  }
+	}
+}

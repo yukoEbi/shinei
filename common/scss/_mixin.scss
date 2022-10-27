@@ -1,0 +1,213 @@
+@charset "utf-8";
+// ============================================
+// mixin
+// ============================================
+@use "config";
+
+// ============================================
+// BreakPoints
+// ============================================
+@mixin pc {
+	@media screen and (max-width: (config.$pc)) {
+		@content;
+	}
+}
+@mixin tab {
+	@media screen and (max-width: (config.$tab)) {
+		@content;
+	}
+}
+@mixin sp {
+	@media screen and (max-width: (config.$sm)) {
+		@content;
+	}
+}
+
+// ============================================
+// Texts
+// ============================================
+// pxをvwに変換するfunction
+@function get_vw($size, $viewport: 375) {
+	$rate: 100 / $viewport;
+	@return $rate * $size * 1vw;
+}
+
+// フォント用のmixin（基準値：画面幅375pxのときフォントサイズ16px）
+@mixin font-vw($font_size: 16, $viewsize: 375) {
+	font-size: $font_size * 1px;
+	font-size: get_vw($font_size, $viewsize);
+}
+
+// 文字間
+@mixin line-height($line-height: config.$lineHeight){
+	line-height: $line-height;
+}
+
+// ============================================
+// Images
+// ============================================
+// 画像用のmixin（画像をvwで指定）
+@mixin img-vw($img_size, $viewsize: 375) {
+	width: $img_size * 1px;
+	width: _get_vw($img_size, $viewsize);
+}
+
+// ホバー
+@mixin imgHover {
+	&:hover {
+		opacity: config.$imageOpacity;
+		transition: 0.5s;
+	}
+}
+
+// 拡大
+@mixin imgScale {
+	&:hover {
+		transform: scale(config.$imageScale, config.$imageScale);
+	}
+}
+
+// レスポンシブ用
+@mixin imgFluid {
+	max-width: 100%;
+	height: auto;
+}
+
+// ============================================
+// Container
+// ============================================
+@mixin containerWrap() {
+	max-width: config.$widthPc;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	box-sizing: border-box;
+	@include pc {
+		max-width: config.$widthPcSm;
+	}
+	@include tab {
+		max-width: config.$widthTab;
+	}
+	@include sp {
+		max-width: config.$widthSp;
+	}
+}
+
+// ============================================
+// Flex
+// ============================================
+@mixin flexCenter($direction) {
+	display: flex;
+	@if $direction==x {
+		justify-content: center;
+	}
+	@if $direction==y {
+		align-items: center;
+	}
+	@if $direction==xy {
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+
+// ============================================
+// Buttons
+// ============================================
+@mixin btn($textColor: #fff, $bgColor: config.$mainColor, $arrow: false) {
+	display: inline-block;
+	background-color: $bgColor;
+	border: $bgColor 1px solid;
+	padding: 0.5em 2em;
+	box-sizing: border-box;
+	border-radius: 8px;
+	color: $textColor;
+	position: relative;
+	transition: 0.7s;
+	appearance: none;
+	&:hover {
+		color: $bgColor;
+		background-color: $textColor;
+	}
+	@if $arrow {
+		&:after {
+			content: "\f054";
+			font-family: "Font Awesome 5 Free";
+			font-weight: bold;
+			position: absolute;
+			top: 50%;
+			right: 5%;
+			transform: translateY(-50%);
+		}
+	}
+}
+
+// ============================================
+// Hr
+// ============================================
+@mixin hr_base($lineColor: config.$borderColor) {
+	height: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-top: $lineColor 1px solid;
+}
+
+// ============================================
+// Ul
+// ============================================
+@mixin ul_base($borderColor: config.$borderColor) {
+	border-top: $borderColor 1px solid;
+	li {
+		border-bottom: $borderColor 1px solid;
+	}
+}
+
+// ============================================
+// Table
+// ============================================
+@mixin table_base($borderColor: config.$borderColor){
+    width: 100%;
+    border-top: $borderColor 1px solid;
+	th{
+		text-align-last: justify;
+	}
+    th,td{
+        padding: 1rem;
+        border-bottom: $borderColor 1px solid;
+    }
+}
+
+// ============================================
+// Forms
+// ============================================
+@mixin form_base($padding: 1rem, $borderColor: config.$borderColor) {
+	appearance: none;
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+	padding: $padding;
+	border: $borderColor 1px solid;
+}
+
+// ============================================
+// Section Title
+// ============================================
+@mixin sectionTitle($color:config.$mainColor, $colorJp:config.$textColor){
+	color: $color;
+	font-size: 4.4rem;
+	text-align: center;
+	margin: 0 0 5rem 0;
+	@include tab{
+		font-size: font-vw(44, 375);
+	}
+	span{
+		display: block;
+		color: $colorJp;
+		font-size: 1.6rem;
+		padding: 1rem 0 0 0;
+		@include tab{
+			font-size: font-vw(16, 375);
+		}
+	}
+}

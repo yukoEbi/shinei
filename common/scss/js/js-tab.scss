@@ -1,0 +1,20 @@
+@charset "utf-8";
+/*---------------------------------
+	JS_tab
+---------------------------------*/
+@use "../config";
+@use "../mixin";
+
+.js-tabSelect{
+	&:hover,
+	&.active{
+
+	}
+}
+.js-tabContent{
+	display: none;
+	&.show {
+		display: block;
+	}
+}
+

@@ -1,0 +1,30 @@
+/*---------------------------------
+	JS_fadeIn
+---------------------------------*/
+.js-fade-in {
+  opacity: 0;
+  transition-duration: 500ms;
+  transition-property: opacity, transform;
+}
+
+.js-fade-in-up {
+  transform: translate(0, 50px);
+}
+
+.js-fade-in-down {
+  transform: translate(0, -50px);
+}
+
+.js-fade-in-left {
+  transform: translate(-50px, 0);
+}
+
+.js-fade-in-right {
+  transform: translate(50px, 0);
+}
+
+.js-scroll-in {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+/*# sourceMappingURL=js-fadeIn.css.map */

@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* ---------------------------------------
+	Key Visual
+-----------------------------------------*/
+@use "../config";
+@use "../mixin";
+
+.keyVisual {
+    width: 100%;
+    height: 850px;
+	background-image: url(../img/page/top/keyVisual.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: cover;
+	position: relative;
+	z-index: 1;
+	margin-top: 120px;
+	@include mixin.tab{
+		margin-top: 70px;
+	}
+	&__wrap{
+		@include mixin.containerWrap();
+	}
+	&__title{
+		position: absolute;
+		top: 240px;
+		left: 0;
+		h1{
+			margin: 0 0 3rem 0;
+			img{
+				@include mixin.imgFluid();
+				filter: drop-shadow(3px 2px 2px #002a4b);
+			}
+		}
+		p{
+			width: 470px;
+			color: #fff;
+			font-size: 18px;
+			line-height: 2.0;
+			text-shadow: 3px 2px 2px #002a4b;
+			@include mixin.tab{
+				width: 100%;
+				@include mixin.font-vw(18,375);
+			}
+		}
+	}
+	&__img{
+		position: absolute;
+		top: 600px;
+		@include mixin.tab{
+			display: none;
+		}
+		img{
+			width: 420px;
+		}
+	}
+}

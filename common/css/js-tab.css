@@ -1,0 +1,10 @@
+/*---------------------------------
+	JS_tab
+---------------------------------*/
+.js-tabContent {
+  display: none;
+}
+.js-tabContent.show {
+  display: block;
+}
+/*# sourceMappingURL=js-tab.css.map */

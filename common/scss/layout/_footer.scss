@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* ---------------------------------------
+	Footer
+-----------------------------------------*/
+@use "../config";
+@use "../mixin";
+
+.pageTop{
+	display: inline-block;
+	position: fixed;
+	bottom: 3%;
+	right: 3%;
+	z-index: 3;
+	a{
+		display: block;
+		width: 6rem;
+		height: 6rem;
+		padding: 1rem;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #e6e6e6;
+		border: #fff 1px solid;
+		img{
+			@include mixin.imgFluid();
+		}
+	}
+}
+
+.footer {
+	&__wrap{
+		@include mixin.containerWrap();
+		padding: 2rem 0;
+		display: flex;
+		align-items: center;
+		@include mixin.tab {
+			@include mixin.font-vw(16 , 375);
+			flex-direction: column;
+		}
+		.logo{
+			margin: 0 3rem 0 0;
+			@include mixin.tab {
+				margin: 0 0 1rem 0;
+			}
+		}
+		address{
+			font-style: normal;
+		}
+	}
+}
