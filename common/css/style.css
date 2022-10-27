@@ -1212,7 +1212,7 @@ a:hover {
   }
 }
 .access__wrap .map {
-  aspect-ratio: 3/2;
+  aspect-ratio: 32/9;
 }
 .access__wrap .map iframe {
   width: 100%;

@@ -220,7 +220,7 @@
 			@include mixin.sectionTitle();
 		}
 		.map{
-			aspect-ratio: 3 / 2;
+			aspect-ratio: 32 / 9;
 			iframe{
 				width: 100%;
 				height: 100%;
